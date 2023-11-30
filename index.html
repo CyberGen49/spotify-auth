@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Auth</title>
+    <meta name="theme-color" content="#26d962">
+    <meta property="og:title" content="Spotify Auth">
+    <meta property="og:description" content="Get access and refresh tokens for your Spotify account to use with the Spotify API.">
+    <link rel="stylesheet" href="main.css">
+    <script defer src="main.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Spotify Auth</h1>
+        <p>Get access and refresh tokens for your Spotify account to use with the Spotify API. See the <a href="https://developer.spotify.com/documentation/web-api">Spotify Web API Documentation</a> to learn more.</p>
+        <div class="cards">
+            <div class="card">
+                <h2>Select scopes</h2>
+                <div id="scopes"></div>
+            </div>
+            <div>
+                <button id="go" class="btn">Authenticate</button>
+            </div>
+            <div class="card">
+                <h2>Client ID</h2>
+                <div class="textbox">
+                    <span id="client">...</span>
+                    <button id="copyClient" class="btn small">Copy</button>
+                </div>
+                <h2>Access token</h2>
+                <div class="textbox">
+                    <span id="tokenAccess">...</span>
+                    <button id="copyAccess" class="btn small">Copy</button>
+                </div>
+                <h2>Refresh token</h2>
+                <div class="textbox">
+                    <span id="tokenRefresh">...</span>
+                    <button id="copyRefresh" class="btn small">Copy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
