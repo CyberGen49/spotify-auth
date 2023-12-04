@@ -72,12 +72,20 @@ const btnCopyRefresh = document.querySelector('#copyRefresh');
 
 window.addEventListener('load', async() => {
     for (const scope of availableScopes) {
-        elScopes.innerHTML += `
-            <label>
-                <input type="checkbox" name="scopes" value="${scope}" />
-                ${scope}
-            </label>
+        const el = document.createElement('label');
+        el.innerHTML = `
+            <input type="checkbox" name="scopes" value="${scope}" />
+            ${scope}
         `;
+        const checkbox = $('input', el);
+        checkbox.addEventListener('change', () => {
+            const scopes = [];
+            for (const el of $$('input[name="scopes"]:checked')) {
+                scopes.push(el.value);
+            }
+            window.history.replaceState({}, '', `${window.location.pathname}?${new URLSearchParams({ scopes: scopes.join(' ') })}`);
+        });
+        elScopes.appendChild(el);
     }
     elClient.innerText = `${clientId}`;
     const query = new URLSearchParams(window.location.search);
@@ -112,6 +120,13 @@ window.addEventListener('load', async() => {
             if (el) {
                 el.checked = true;
             }
+        }
+    }
+    if (query.get('scopes')) {
+        const scopes = query.get('scopes').split(' ');
+        for (const scope of scopes) {
+            const el = $(`input[name="scopes"][value="${scope}"]`);
+            if (el) el.checked = true;
         }
     }
 });
