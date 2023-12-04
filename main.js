@@ -1,4 +1,7 @@
 
+const $ = (selector, el = document) => el.querySelector(selector);
+const $$ = (selector, el = document) => el.querySelectorAll(selector);
+
 const clientId = '9b3eebd608264757b9d4bd1f21311243';
 const redirectUri = window.location.origin;
 const availableScopes = [
